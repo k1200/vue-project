@@ -1,0 +1,46 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.7.2",
+	"appid": "wxb2ee3e1f5bff8b5b",
+	"projectname": "wxbag",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "分享",
+					"pathName": "pages/bag/bag",
+					"query": "id=1&pid=2"
+				},
+				{
+					"id": 1,
+					"name": "scene 测试编译",
+					"pathName": "pages/bag/bag",
+					"query": "scene=id%3d1%26pid%3d14",
+					"scene": "1012"
+				}
+			]
+		}
+	}
+}

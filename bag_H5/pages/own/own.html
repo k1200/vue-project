@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">   
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <title>西蜀网优选</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
+  <meta name="format-detection" content="telphone=no, email=no"/> 
+  <meta name="apple-mobile-web-app-capable" content="yes"> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+
+  <link rel="stylesheet" type="text/css" href="../../app.css">
+  <link rel="stylesheet" type="text/css" href="own.css">
+  <script src="../../vue-dev/dist/vue.js"></script>
+  <script src="../../adaption.js"></script>
+  <script src="../../app.js"></script>
+  <style type="text/css" media="screen">
+    body {
+      background: #f2f2f2;
+    }
+    article {
+      padding-bottom: 2.6rem;
+    }
+  </style>
+</head>
+<body>
+  <article id="own">
+    <div class="container">
+      <div v-if="data.length > 0" class='goods' style='height:100%;'>
+        <div class='goods_item' v-for="(item, index) in data" :key="id" :data-checkid = "item.id" :disabled='item.state>0 ? true:false'>
+          <img class='goods_item_image' :src='item.pic_1'></img>
+          <div class='goods_item_info'>
+            <div class='goods_item_title'>{{item.title}}</div>
+            <div class='goods_item_state'>
+              <span style='margin-right:auto;font-size:12px;'>有效期：{{item.use_end}}</span>
+              <button class='goods_item_btn' @click='checkPic' :data-checkid = "item.id" :disabled='item.state>0 ? true:false'>{{item.mark}}</button>
+            </div>
+          </div>
+        </div>
+
+        <div v-if="data.length === 0" class='nodata'> 没有更多数据 </div>
+      </div>
+
+      <div class='modal' v-show="ishidden">
+        <div style='position:relative;width:80%;'>
+          <button class='closeModal'>×</button>
+          <div class='checkCode'>
+            <img :src='code' style="width:80%;"></img>
+            <div style='margin:8px 0'>
+            验证码：<span style='color:red;font-size:.8rem.font-weight:bold;'>{{checkCode}}</span> 
+            </div>
+            <div class='heckCode_tip'>
+             请由商家扫码核销
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <footer>
+    <a class='bottomNav_item' href='../home/home.html'>
+      <img src='../images/nav_03.png'></img>
+      <span>首页</span>
+    </a>
+    <a class='bottomNav_item' href='javascript:;'>
+      <img src='../images/nav_05.png'></img>
+      <span>我的</span>
+    </a>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+  <script src="own.js"></script>
+
+  <script type="text/javascript">
+
+  </script>
+</body>
+</html>

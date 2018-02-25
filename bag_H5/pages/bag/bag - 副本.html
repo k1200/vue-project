@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">   
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <title>西蜀网优选</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
+  <meta name="format-detection" content="telphone=no, email=no"/> 
+  <meta name="apple-mobile-web-app-capable" content="yes"> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+
+  <link rel="stylesheet" type="text/css" href="../../app.css">
+  <link rel="stylesheet" type="text/css" href="bag.css">
+  <script charset="utf-8" src="http://map.qq.com/api/js?v=2.exp"></script>
+  <script charset="utf-8" src="../../zepto.min.js"></script>
+  <script src="../../vue-dev/dist/vue.js"></script>
+  <script src="../../adaption.js"></script>
+  <script src="../../app.js"></script>
+  <style type="text/css" media="screen">
+    /*.scroll-content {
+      transform: translateY(0px);
+      animation:winnerScroll 10s linear infinite ;
+    }
+    @keyframes winnerScroll {
+      0%   {transform: translateY(0px)}
+      100% {transform: translateY(-400px)}
+    }
+    @-webkit-keyframes winnerScroll {
+      0%   {transform: translateY(0px)}
+      100% {transform: translateY(-400px)}
+    }*/
+  </style>
+</head>
+<body>
+  <article id="bag">
+    <div class="container">
+      <!-- 活动未开始按钮全部隐藏 -->
+
+      <div class='head'>
+        <a href="../home/home.html" class='goHome'>
+          <img style='height:1rem' src='../images/nav_05.png'></img>
+          福袋首页
+        </a>
+        <div class='getpv'>
+          已有<span style='color:#ffd514;'>{{data.pv}}</span>人喜欢
+        </div>
+        <img class='head_img' :src='data.pic_1'></img>
+      </div>
+
+      <!-- 倒计时（down_time） 块 -->
+      <div class='down_time'>
+        {{ page_timestamp }}
+      </div>
+
+      <!-- 兑换商品（goods） 块 -->
+      <div class='goods'>
+
+        <div v-for="(item, index) in data.plist" :key="item.id" class='goods_item'>
+          <div class='goods_item_title txtellipsis'><span>{{item.title}}</span></div>
+          <div class='goods_item_nums'>
+            <span>已兑换:{{item.get_sum}}份</span>
+            <span style='margin:0 auto 0 8px'>剩余数量:{{item.re_sum}}份</span>
+            <button v-if="item.btn" class='goods_item_btn' @click="selectAward" :data-idx="index" :data-plistid = "item.id">{{item.mark}}</button>
+          </div>
+        </div> 
+
+        <button v-if="page_getAwardBtn" class='goods_prize_btn' @click="drawGoods">
+          <img class='goodsPrize_imgBtn' src="../images/bag_05.png"></img>
+          <span class='goodsPrize_txtBtn' style='position:relative;'>点击抽奖</span>
+        </button>
+      </div>
+
+      <!-- 集字（words）块 -->
+      <div class='words' style='padding:12px 5px;'>
+        <div class='words_bags'>
+          <div v-for="(item, index) in page_words" :key="index" :data-num="item.num == 0 ? '' : item.num" class='words_bag' :class="item.class">
+            <div class='words_bags_item' :class="item.class">
+              <img class='wordsBags_itemImg' :class="item.class" src='../images/bag_09.png'></img>
+              <span class='wordsBags_itemWord'>{{item.word}}</span>
+            </div>
+          </div>
+        </div> 
+       <!-- 默认可以抽奖 ； 活动未开时抽奖次数为零  -->
+        <div class='words_bags_btn'>
+          <button @click='drawPrize' class='words_bagBtn' :disabled='data.start_>0'>
+            {{page_getWordBtn}}
+          </button>
+        </div>
+
+        <div class='words_bagBtns' v-show='page_useWordBtns'>
+          <button v-if="data.help_state>0" @click='toGetHelp' class='words_bagBtns-item'>求助好友</button>
+          <a v-if="data.buy_limit>0" class='words_bagBtns-item' :href="'../order/order.html?id='+data.shopid">购买次数</a>
+        </div> 
+
+      </div>
+
+      <!-- 活动规则（rules）块 -->
+      <div class='rules'>
+        <div class='item_title'>
+          <div class='item_title_before'></div><div class='item_title_after'></div>
+          <span class='item_title_text'>活动规则</span>
+        </div> 
+        
+        <div class='rules_item'>
+          <div v-for="(item, index) in data.rules">{{item}}</div>
+        </div>
+        <button v-show='page_subgetsumBtn' class='getBtn' >
+          你还可以获得{{data.subgetsum}}次集福机会
+        </button>
+      </div>
+
+      <!-- 活动详情（goodInfo）块 -->
+      <div class='goodInfo'>
+        <div class='item_title'>
+          <div class='item_title_before'></div><div class='item_title_after'></div>
+          <span class='item_title_text'>活动详情</span>
+        </div>
+        <div id='wx_parse' v-html="data.details"> </div>
+      </div>
+
+      <!-- 兑换名单（winner）块 -->
+      <div class='winner'>
+        <div class='item_title'>
+          <div class='item_title_before'></div><div class='item_title_after'></div>
+          <span class='item_title_text'>兑换名单</span>
+        </div>
+
+         <div :style="'height:' + page_scrollH" class='scrollBox'> 
+          <div class='scroll-content' style='position:relative;' v-on:load="winnerScroll">
+            <div v-if="data.changeData.length>0" class='winner-item' v-for="(item, index) in data.changeData" :key="item.id">
+              <img class='winner-item-head' :src='item.headimg'></img>
+              <div class='winner-item-infos'>
+                <div class='winner-item-nickname'>
+                  <span class='txtellipsis' style='color:#000;font-size:.8rem;font-weight:bold;margin-right:auto;max-width:4.5;'>{{item.nickname}}</span>
+                  <span class=''>{{item.dateline}}</span>
+                </div>
+                <div class='winner-item-words txtellipsis'>{{item.title}}</div> 
+              </div>
+            </div>
+
+            <div v-if="data.changeData.length < 1" class='nodata'>
+              暂无人员兑换
+            </div>
+          </div>
+         </div> 
+      </div>
+    </div>
+
+   <button v-show='page_subgetsumBtn' class='airlines' open-type="contact" >
+      <img class='airline_img' :src='data.logo'></img>
+      免费获得更多集福机会
+    </button>
+
+    <div class='modal' v-show="page_modal">
+      <div style='position:relative;width:80%;'>
+        <button bindtap='isHideHelp' class='closeModal'>×</button>
+
+        <div class='modal-body'>
+          <div class='modal-tips'>
+
+            <div class='modal-title'>
+              <div class="modal-award"> {{page_awardTitle}} </div>
+            </div> 
+
+            <div class='modal-content'>
+              <div class='modal-awardContent txtellipsis'>{{page_awardContent}}</div>  
+            </div>
+
+          </div> 
+
+          <div class="modal-btn">
+            <a href="../own/own?id=awardid">查看订单</a>
+          </div>
+        </div>
+
+        <!-- <div class='award_modal' v-show="modal.getaword">
+          <div class='get_award'>
+            <div class='get_awarded' style = "position:relative;top:-1.75rem;font-size:.8rem;font-weight:bold;">{{page_awardtitle}}</div> 
+            <div class='get_award_box' style="position:relative;top:-1.5rem;">
+              <div class='get_award_key txtellipsis'>{{page_award}}</div>  
+            </div>
+          </div> 
+          <a :href="'../own/own?id=' + awardid" class='goOwn'>查看订单</a>
+        </div>
+
+        <div class='word_modal' v-show="modal.getword">
+            <div class='get_word'>
+            <div class='get_worded' style = "position:relative;top:-1.75rem;">恭喜你抽中...</div> 
+            <div class='get_word_box' style="position:relative;top:-1.5rem;">
+              <div class='get_image'>
+                <img style='width:100%;' src='../images/bag_09.png'></img>
+              </div>
+              <span class='get_key'>{{page_word}}</span> 
+            </div>
+          </div> 
+          <button bindtap='drawPrize' class='words_bagBtn'>{{page_goon}}</button>
+        </div>
+
+        <div class='get_morenum' v-show="modal.get_morenum">
+          <div class='get_award'>
+            <div class='get_awarded' style = "position:relative;top:-1.75rem;font-size:.8rem;font-weight:bold;">机会攻略</div> 
+            <div class='get_award_box' style="position:relative;top:-.25rem;">
+               <div class='get_award_key txtellipsis'>点击下方按钮即可获得更多集福机会</div>  
+            </div>
+          </div> 
+          <button v-show='!data.getcount_state' class='getMore_aling' open-type="contact" > 获取更多机会 </button>
+        </div>
+
+        <div class='seekHelp' v-show="modal.gethelp">
+          <div class='help_head'>
+          <img src='../images/baghelp_03.png'></img>
+          <div>小贴士：以下两种方式均可获得集福机会！</div>
+          <div>记得哦~</div>
+          </div>
+          <div class='help_way'>
+            <button open-type="share">微信群求助</button>
+            <button bindtap='createPoster'>朋友圈求助</button>
+          </div>
+        </div>
+
+        <div class='poster' v-show="modal.hasposter">
+          <img bindtap='prediv' :data-src = "page_poster" :src='page_poster' style="width:80%;"></img>
+          <div class='poster_tip'>
+            点击图片进行预览，然后长按预览图片选择保存图片或发送给朋友
+          </div>
+        </div>  -->
+
+      </div>
+
+    </div>
+
+   <!--  <div v-show ="inithidden" class='init'>
+      <img src='http://7xoq3p.com1.z0.glb.clouddn.com/xshop/20180109/15154983759289.gif' style='width:80px'></img>
+    </div> -->
+
+  </article>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+  <script src="bag.js"></script>
+
+  <script type="text/javascript">
+
+    
+    
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

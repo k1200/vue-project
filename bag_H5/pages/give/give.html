@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">   
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <title>西蜀网优选</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
+  <meta name="format-detection" content="telphone=no, email=no"/> 
+  <meta name="apple-mobile-web-app-capable" content="yes"> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+
+  <link rel="stylesheet" type="text/css" href="../../app.css">
+  <link rel="stylesheet" type="text/css" href="give.css">
+  <script src="../../vue-dev/dist/vue.js"></script>
+  <script src="../../adaption.js"></script>
+  <script src="../../app.js"></script>
+  <style type="text/css" media="screen">
+    body {
+      background: url("../../images/giveBag.png");
+      /*background-size: 100% 100% ;*/
+      background-repeat: no-repeat;
+      padding-top: 15%;
+    }
+  </style>
+</head>
+<body>
+  <article id="give">
+    <div class="whoGet">
+      <img class="whoHead" :src="data.headimg" alt="headimg">
+      <div class="whoInfo">
+        <p class="nickname">{{ data.nickname }}</p>
+        <p class="title">TA正在向你求福</p>
+      </div>
+    </div>
+
+    <div class="whatWords">
+      <div class="bagIcon">
+        <img src="../../images/bag_09.png" alt="bag">
+        <span>{{ data.giveword }}</span>
+      </div>
+    </div>
+    <div class="isGive">
+      <a href="javascript:;">
+        同意赠送
+      </a>
+    </div>
+    
+
+    <div class="myBag">
+      <p class="title">我的福袋</p>
+      <div class="bagsBox">
+        <div class="bags">
+          <div v-for="(item, index) in data.myword" class="bag-item">
+            <div class="bag">
+              <div class="wordsBag">
+                <img src="../../images/bag_09.png" alt="bag">
+                <span>{{ item.word }}</span>
+              </div>
+            </div>
+            <p class="bagNum">{{ item.num }}个</p>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </article>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+  <script src="give.js"></script>
+
+  <script type="text/javascript">
+
+  </script>
+</body>
+</html>

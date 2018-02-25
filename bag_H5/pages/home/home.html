@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">   
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <title>西蜀网优选</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
+  <meta name="format-detection" content="telphone=no, email=no"/> 
+  <meta name="apple-mobile-web-app-capable" content="yes"> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+  <link rel="stylesheet" type="text/css" href="../../app.css">
+  <link rel="stylesheet" type="text/css" href="home.css">
+  <style type="text/css" media="screen">
+    article {
+      padding-bottom: 2.6rem;
+    }
+  </style>
+</head>
+<body>
+  <article id="home">
+    <div class="container">
+      <div class='head'>
+        <img :src="appset.toppic" style='width:100%;'></img>
+      </div>
+
+      <div class='goods'>
+        <a v-for="(item, index) in data" :href ="'../bag/bag.html?id=' + item.id" class='goods_item' :key="item.id" :data-state="item.mark" >
+          <div style='position:relative;'>
+            <img class='goods_item_image' :src='item.pic_1'></img>
+            <div class='down_time'>
+              {{ item.page_timestamp}}
+            </div>
+          </div>
+          <div class='goods_item_title txtellipsis'>{{ item.title}}</div>
+          <div class='goods_item_progress'>
+            <div :class='item.page_class' :style="'width:' + item.page_progress + '%;'"></div>
+            <span style='position:relative;'>已兑换{{ item.get_sum}}份</span>
+          </div>
+          <div v-if="item.change.length>0" class='goods_item_user'>
+            <img v-for="(list, idx) in item.change" :key = "list.unionid" :src="list.headimg"></img>
+          </div>
+        </a>
+      </div>
+    </div>
+  </article>
+  <footer>
+    <a class='bottomNav_item' href='javascript:;'>
+      <img src='../images/nav_05.png'></img>
+      <span>首页</span>
+    </a>
+    <a class='bottomNav_item' href='../own/own.html'>
+      <img src='../images/nav_13.png'></img>
+      <span>我的</span>
+    </a>
+  </footer>
+	
+	<!--<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>-->
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="../../vue-dev/dist/vue.js"></script>
+  <script src="../../adaption.js"></script>
+  <script src="../../app.js"></script>
+  <script src="home.js?id=1"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

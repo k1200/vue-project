@@ -1,0 +1,165 @@
+.whoGet {
+	width: 80%;
+  margin: auto;
+  background: rgba(71, 54, 103, .7);
+  border-radius: 5rem;
+  position: relative;
+  color: #fff;
+  height: 3.6rem;
+  padding: .3rem 1.75rem;
+  display: flex;
+  align-items: center;
+}
+.whoHead {
+	width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  position: absolute;
+}
+.whoInfo {
+	padding-left: 3.5rem;
+}
+.whoInfo p {
+	margin: 0;
+}
+.whoInfo .nickname {
+	font-size: .9rem;
+  font-weight: bold;
+}
+.whoInfo .title {
+	font-size: .8rem;
+}
+
+.whatWords {
+	background: url("../../images/givewordsbg.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+	width: 50%;
+	margin: auto;
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+	height: 13rem;
+  margin-top: 1.5rem;
+}
+.bagIcon {
+  width: 55%;
+  position: relative;
+  height: 40%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bagIcon img {
+	position: absolute;
+  width: 100%;
+  overflow: hidden;
+  top: 0;
+}
+.bagIcon span {
+  position: relative;
+  z-index: 9;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #fff717;
+  top: .25rem;
+  font-family: cursive;
+}
+
+.isGive {
+	text-align: center;
+	margin-top: 1.2rem;
+}
+.isGive a {
+  background: #ffe939;
+  border-radius: 3rem;
+  font-weight: bold;
+  font-size: .8rem;
+  padding: .2rem .75rem;
+}
+
+.myBag {
+  width: 95%;
+  margin: 1.2rem auto;
+  text-align: center;
+  background: red;
+  background: rgba(71, 54, 103, .7);
+  border-radius: .75rem;
+  padding: .3rem;
+  color: #fff;
+}
+.myBag .title {
+  font-weight: bold;
+  font-size: .8rem;
+  position: relative;
+  display: flex;
+  margin: 0;
+  padding-top: .3rem;
+  justify-content: center;
+  align-items: center;
+}
+.myBag .title::before, .myBag .title::after {
+	content: '';
+	width: .3rem;
+	height: .3rem;
+	background-color: #fff;
+	transform: rotate(45deg);
+	margin-right: .6rem;
+}
+.myBag .title::after {
+	margin-left: .6rem;
+}
+
+.bagsBox {
+	max-width: 100%;
+	overflow: auto;
+}
+.bags {
+	display: flex;
+}
+.bag-item {
+	width: 3rem;
+	margin: .6rem;
+}
+.bag {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	overflow: hidden;
+	width: 3rem;
+	height: 3rem;
+	background: url("../../images/wordsbg.png");
+	background-size: 100% 100%;
+	background-repeat: no-repeat;
+}
+.wordsBag {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  width: 2rem;
+  height: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.wordsBag img {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  top: 0;
+  width: 2rem;
+}
+.wordsBag span {
+  position: relative;
+  z-index: 9;
+  font-size: .8rem;
+  font-weight: bold;
+  color: #fff717;
+  top: 1px;
+}
+.myBag .bagNum {
+	margin:0;
+}

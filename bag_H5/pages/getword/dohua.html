@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">   
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <title>西蜀网优选</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
+  <meta name="format-detection" content="telphone=no, email=no"/> 
+  <meta name="apple-mobile-web-app-capable" content="yes"> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+
+  <link rel="stylesheet" type="text/css" href="../../app.css">
+  <link rel="stylesheet" type="text/css" href="getword.css">
+  <script src="../../vue-dev/dist/vue.js"></script>
+  <script src="../../adaption.js"></script>
+  <script src="../../app.js"></script>
+  <style type="text/css" media="screen">
+    body {
+      background: url("../../images/giveBag.png");
+      /*background-size: 100% 100% ;*/
+      background-repeat: no-repeat;
+      padding-top: 15%;
+    }
+    .bag-item, .bag-shade {
+      -webkit-transition:1s linear ;
+      transition:1s linear ;
+    }
+    .bag-item.left {
+      transform:scale(1) translateX(7%); 
+    }
+    .bag-item.right {
+      transform:scale(1) translateX(60%) ;
+    }
+    .bag-item.activity {
+      transform: scale(1.2) translateX(28%) ;
+    }
+    .bag-shade {
+      opacity: .4 ;
+    }
+    .bag-item.activity .bag-shade {
+      opacity: 0 ;
+    }
+  </style>
+</head>
+<body>
+  <article id="getword">
+    <div class="headTitle">
+      <p class="title-item">集福袋兑大礼</p>
+      <p class="title-item">玩转绵阳吃喝玩乐</p>
+    </div>
+
+    <div class="bags">
+      <div class="bag-item activity" data-num="0">
+        <span class="bag-shade" ></span>
+        <div class="bag-item-word">
+          <div class="wordBox">
+            <img src="../../images/wordbox.png" width="100%" alt="givewordsbg">
+          </div>
+
+          <div class="word">
+            <div class="word-img">
+              <img src="../../images/bagBig.png" alt="bagBig">
+            </div>
+            <span>绵</span>
+          </div>
+        </div>
+        <div class="bag-item-btns">
+          <a class="turnToSb" href="javascript:;">求好友赠送</a>
+        </div>
+      </div>
+      <div class="bag-item left" data-num="0">
+        <span class="bag-shade"></span>
+        <div class="bag-item-word">
+          <div class="wordBox">
+            <img src="../../images/wordbox.png" width="100%" alt="givewordsbg">
+          </div>
+
+          <div class="word">
+            <div class="word-img">
+              <img src="../../images/bagBig.png" alt="bagBig">
+            </div>
+            <span>阳</span>
+          </div>
+        </div>
+        <div class="bag-item-btns">
+          <a class="turnToSb" href="javascript:;">求好友赠送</a>
+        </div>
+      </div>
+      <div class="bag-item right" data-num="0">
+        <span class="bag-shade"></span>
+        <div class="bag-item-word">
+          <div class="wordBox">
+            <img src="../../images/wordbox.png" width="100%" alt="givewordsbg">
+          </div>
+
+          <div class="word">
+            <div class="word-img">
+              <img src="../../images/bagBig.png" alt="bagBig">
+            </div>
+            <span>火</span>
+          </div>
+        </div>
+        <div class="bag-item-btns">
+          <a class="turnToSb" href="javascript:;">求好友赠送</a>
+        </div>
+      </div>
+      <div class="bag-item left" data-num="0">
+        <span class="bag-shade"></span>
+        <div class="bag-item-word">
+          <div class="wordBox">
+            <img src="../../images/wordbox.png" width="100%" alt="givewordsbg">
+          </div>
+
+          <div class="word">
+            <div class="word-img">
+              <img src="../../images/bagBig.png" alt="bagBig">
+            </div>
+            <span>锅</span>
+          </div>
+        </div>
+        <div class="bag-item-btns">
+          <a class="turnToSb" href="javascript:;">求好友赠送</a>
+        </div>
+      </div>
+      <div class="bag-item right" data-num="0">
+        <span class="bag-shade"></span>
+        <div class="bag-item-word">
+          <div class="wordBox">
+            <img src="../../images/wordbox.png" width="100%" alt="givewordsbg">
+          </div>
+
+          <div class="word">
+            <div class="word-img">
+              <img src="../../images/bagBig.png" alt="bagBig">
+            </div>
+            <span>节</span>
+          </div>
+        </div>
+        <div class="bag-item-btns">
+          <a class="turnToSb" href="javascript:;">求好友赠送</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="bags" @touchstart.prevent="moveStart" @touchmove.prevent="moveing" @touchend.prevent="movend">
+      <div v-for="(item, index) in data" :class="{activity:index===0}" class="bag-item" :data-num="item.num">
+        <div class="bag-item-word">
+          <div class="wordBox">
+            <img src="../../images/wordbox.png" width="100%" alt="givewordsbg">
+          </div>
+
+          <div class="word">
+            <div class="word-img">
+              <img src="../../images/bagBig.png" alt="bagBig">
+            </div>
+            <span>{{ item.word }}</span>
+          </div>
+        </div>
+        <div class="bag-item-btns">
+          <a class="turnToSb" href="javascript:;" @touchstart.stop="" @touchmove.stop="" @touchend.stop = "" @click.stop="turnToSb" >求好友赠送</a>
+        </div>
+      </div>
+    </div>  --> 
+
+  </article>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+  <script src="../../jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="getword.js"></script>
+  <script type="text/javascript">
+    var eventP = document.querySelectorAll("bags")[0];
+    var bagItem = document.querySelectorAll("div.bag-item") ;
+    for(var i=0;i<bagItem.length;i++){
+      var n = i ;
+      bagItem[n].addEventListener('touchstart',touch, false);  
+      bagItem[n].addEventListener('touchmove',touch, false);  
+      bagItem[n].addEventListener('touchend',touch, false);  
+    }
+    var startX = null, endX = null, moveX = null, interval = null;   
+    function touch (event){  
+      var event = event || window.event;  
+      var target = event.target ;
+      if(target.className === "turnToSb") return false ; 
+      (function f (_target) {
+        if(!_target.hasAttribute("class") || !_target.className.match(/activity/)){
+          _target = _target.parentElement ;
+          f(_target) ;
+        }else if(_target.className.match("activity")){
+          target = _target;
+          return false ;
+        }
+      }(target))
+      var prev = target.previousElementSibling;
+      var next = target.nextElementSibling;
+      if(!prev) {
+        prev = target.parentElement.lastElementChild ;
+      }
+      if(!next) {
+        next = target.parentElement.firstElementChild ;
+      }
+      var child = target.children, shard = null;
+      for(var i=0;i<child.length;i++) {
+        if(child[i].className === "bag-shade activity") {
+          shard = child[i];
+          continue;
+        }
+      }
+
+      var w = target.clientWidth ;
+      var touch = event.changedTouches[0] ;
+      switch(event.type){  
+          case "touchstart": 
+            startX = touch.pageX; 
+            interval = touch.pageX;
+            break;  
+          case "touchend":  
+              console.log(191);
+              console.log(touch.pageX);
+              if((parseFloat(touch.pageX) - parseFloat(startX)) > 100 ) {
+                target.className = "bag-item right" ;
+                prev.className = "bag-item activity" ;
+              }else if(parseFloat(touch.pageX) - parseFloat(startX) < -100) {
+                target.className = "bag-item left" ;
+                next.className = "bag-item activity" ;
+              }
+              // target.className = target.className.replace("activity","") ;
+              break;  
+          case "touchmove":  
+              event.preventDefault();  
+              event.stopPropagation();
+              if(parseInt(interval) - parseInt(touch.pageX) > 0) { // 当前触摸点相对于前一触摸点左偏移
+
+
+
+
+
+                // var left = parseFloat(target.style.left) ;
+                // var scale = parseFloat(target.style.transform.match(/(1\.\d+)|1/)) ;
+                // var rgba = shard.style.backgroundColor.match(/\d.+\d/) ;
+                // if(left > 20) { //  activity div偏右
+
+                // }else{
+
+                // }
+                // var left = parseFloat(target.style.left) - 0.5 ;
+                // var scale = parseFloat(target.style.transform.match(/(1\.\d+)|1/)) - 0.007 ;
+                // var rgba = shard.style.backgroundColor.match(/\d.+\d/) ;
+                // var rgbaL = rgba.split(",") ;
+                // rgba = parseFloat(rgba[rgbaL])
+                // console.log("rgba:"+rgba);
+                // if(left < 5) left = 5 ;
+                // if(scale < 1) scale = 1 ;
+
+                // target.style.left = left + "%";
+                // target.style.transform = "scale("+scale+")"; ;
+                
+
+                // var _left = parseFloat(next.style.left) - 0.5 ;
+                // var _scale = parseFloat(next.style.transform.match(/(1\.\d+)|1/)) + 0.007 ;
+
+                // if(_left < 20) _left = 20 ;
+                // if(_scale > 1.2) _scale = 1.2 ;
+                
+                // next.style.left = _left + "%";
+                // next.style.transform = "scale("+_scale+")" ;
+                // next.style.zIndex = "19" ;
+
+
+                // next.style.zIndex = "20" ;
+                // target.className = target.className.replace("activity","") ;
+                // next.className = prev.className+" activity";
+              }else if(parseInt(interval) - parseInt(touch.pageX) < 0) { // 当前触摸点相对于前一触摸点右偏移
+                // var left = parseFloat(target.style.left) + 0.5 ;
+                // var scale = parseFloat(target.style.transform.match(/(1\.\d+)|1/)) - 0.007 ;
+
+                // if(left > 35 ) left = 35 ;
+                // if(scale < 1) scale = 1 ;
+
+                // target.style.left = left + "%";
+                // target.style.transform = "scale("+scale+")"; ;
+                
+
+                // var _left = parseFloat(next.style.left) + 0.5 ;
+                // var _scale = parseFloat(next.style.transform.match(/(1\.\d+)|1/)) + 0.007;
+
+                // if(_left > 20) _left = 20 ;
+                // if(_scale > 1.2) _scale = 1.2 ;
+                
+                // next.style.left = _left + "%";
+                // next.style.transform = "scale("+_scale+")" ;
+                // next.style.zIndex = "19" ;
+
+
+                // target.style.left = "35%";
+                // target.style.transform = "scale(1)" ;
+                // target.style.zIndex = "18" ;
+                // target.className = target.className.replace("activity","") ;
+                // prev.style.left = "20%";
+                // prev.style.transform = "scale(1.2)" ;
+                // prev.style.zIndex = "20" ;
+                // prev.className = prev.className+" activity";
+                console.log("向右")
+              }
+            //  interval = touch.pageX ;
+              break;  
+      }    
+    }  
+
+    $("div.bags").on("touchstart", "a.turnToSb", function(e){
+      console.log(149)
+    })
+
+  </script>
+</body>
+</html>

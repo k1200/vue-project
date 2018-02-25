@@ -1,0 +1,40 @@
+/**app.css 1.0.0 **/
+html,body {
+  margin:0;
+  padding: 0;
+  font-size: 20px;
+  height: 100%;
+  width: 100%;
+}
+body {
+  background-color: #fbcd02;
+  font-size: .7rem;
+}
+* {
+  box-sizing: border-box;
+}
+ul {
+  margin:0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+button, a {
+  outline: none;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+button {
+  border:none;
+}
+img {
+  display: block;
+}
+
+.mui-content {
+	background-color: #fbcd02;
+	padding-bottom: 55px;
+}

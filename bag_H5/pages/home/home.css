@@ -1,0 +1,83 @@
+
+.goods {
+  width: 90%;
+  margin: auto;
+}
+.goods_item {
+  padding: 8px 8px 0;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 8px;
+  display: block;
+}
+.down_time {
+  background-color:rgba(0,0,0,0.5);
+  position:absolute;
+  bottom:0;
+  text-align: center;
+  padding: 3px 0;
+  width: 100%;
+  color: #fff;
+}
+.goods_item::after {
+  position:absolute;
+  content:attr(data-state);
+  padding:3px 0;
+  color:#fff;
+  background-color:#ff551b;
+  right:-25px;
+  top:12px;
+  transform:rotate(45deg);
+  width:100px;
+  text-align:center;
+}
+.goods_item_image {
+  width: 100%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  display: block;
+}
+.goods_item_title {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px;
+}
+.goods_item_progress {
+  width: 96%;
+  padding: 2px 0;
+  background-color: #101010;
+  border-radius: 30px;
+  position: relative;
+  color: #fff;
+  text-align: center;
+  margin: 5px auto;
+  overflow: hidden;
+}
+.progress , .progress_full {
+  height: 100%;
+  position: absolute;
+  background-color: #ff551b;
+  border-bottom-left-radius:30px;
+  border-top-left-radius:30px;
+  left:0;
+  top:0;
+}
+.progress_full {
+  border-bottom-right-radius:30px;
+  border-top-right-radius:30px;
+}
+.goods_item_user {
+  padding: 0 8px;
+  display: flex;
+  justify-content: center;
+}
+.goods_item_user img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  margin: 8px 5px;
+  border:1px solid #ddd;
+}

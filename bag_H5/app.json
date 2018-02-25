@@ -1,0 +1,14 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/bag/bag",
+    "pages/order/order",
+    "pages/own/own"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fbcd02",
+    "navigationBarTitleText": "盐城福袋",
+    "navigationBarTextStyle": "black"
+  }
+}

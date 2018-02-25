@@ -1,0 +1,105 @@
+/* pages/order/order.wxss */
+.goods {
+  background-color: #f4f4f4;
+  padding: .4rem 1rem .4rem .4rem ;
+  position: relative;
+  height: 4.8rem;
+  margin-bottom:.6rem;
+
+}
+.goods_image {
+  position: absolute;
+  width: 4rem;
+  height: 4rem;
+  left: .4rem;
+}
+.goods_info {
+  padding-left:4.4rem;
+  padding-right: 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  height:100%;
+}
+.goods_title, .goods_num, .goods_price {
+  width: 100%;
+}
+.goods_title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  align-self: flex-start;
+}
+.goodsSum, .numbox, .submit {
+  display: flex;
+}
+.numbox {
+  width:initial;
+  line-height:1.25rem;
+  text-align: center;
+}
+.numbox button {
+  border-radius:0;
+  font-size:1rem;
+  font-weight:bold;
+  padding:0;
+  width:1.4rem;
+}
+.numbox text {
+  padding:0 5px;
+  min-width: 1rem;
+}
+.submit {
+  position: fixed;
+  bottom: 0;
+  line-height:2.2rem;
+  padding-left:.75rem;
+  border-top:1px solid #f1f1f1;
+}
+.sumPrice {
+  width:initial;
+  margin-right:auto;
+}
+.submitBtn {
+  background-color:#f3d213;
+  border-radius:0;
+  font-size:.8rem;
+  width:30%;
+}
+.modal {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+  background-color: rgba(0, 0, 0, .3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+}
+.modal_content {
+  width:85%;
+  padding:.6rem;
+  background-color:#fff;
+  border-radius:8px;
+  min-height:10rem;
+  position:relative;
+  display:flex;
+  align-items:center;
+}
+.modal_tips {
+  text-align: center;
+}
+.closeModal {
+  padding:2px .6rem;
+  position:absolute;
+  bottom:.9rem;
+  width:50%;
+  left:25%;
+  background:green;
+  color:#fff;
+  font-weight:bold;
+  font-size:.7rem;
+  line-height:1.4rem;
+}

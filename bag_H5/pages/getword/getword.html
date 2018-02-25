@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">   
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <title>西蜀网优选</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
+  <meta name="format-detection" content="telphone=no, email=no"/> 
+  <meta name="apple-mobile-web-app-capable" content="yes"> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+
+  <link rel="stylesheet" type="text/css" href="../../app.css">
+  <link rel="stylesheet" type="text/css" href="getword.css">
+  <script src="../../vue-dev/dist/vue.js"></script>
+  <script src="../../adaption.js"></script>
+  <script src="../../app.js"></script>
+  <style type="text/css" media="screen">
+    body {
+      background: url("../../images/giveBag.png");
+      /*background-size: 100% 100% ;*/
+      background-repeat: no-repeat;
+      padding-top: 15%;
+    }
+    
+  </style>
+</head>
+<body>
+  <article id="getword">
+    <!-- <div class="headTitle">
+      <p class="title-item">集福袋兑大礼</p>
+      <p class="title-item">玩转绵阳吃喝玩乐</p>
+    </div> -->
+
+    <div class="bags">
+      <div class="bag-item left" data-index="0" data-num="0">
+        <span class="bag-shade"></span>
+        <div class="bag-item-word">
+          <div class="wordBox">
+            <img src="../../images/wordbox.png" width="100%" alt="givewordsbg">
+          </div>
+
+          <div class="word">
+            <div class="word-img">
+              <img src="../../images/bagBig.png" alt="bagBig">
+            </div>
+            <span>锅</span>
+          </div>
+        </div>
+        <div class="bag-item-btns">
+          <a class="turnToSb" href="javascript:;">求好友赠送</a>
+        </div>
+      </div>
+       <div class="bag-item left" data-index="1" data-num="0">
+        <span class="bag-shade"></span>
+        <div class="bag-item-word">
+          <div class="wordBox">
+            <img src="../../images/wordbox.png" width="100%" alt="givewordsbg">
+          </div>
+
+          <div class="word">
+            <div class="word-img">
+              <img src="../../images/bagBig.png" alt="bagBig">
+            </div>
+            <span>节</span>
+          </div>
+        </div>
+        <div class="bag-item-btns">
+          <a class="turnToSb" href="javascript:;">求好友赠送</a>
+        </div>
+      </div>
+      
+      <div class="bag-item activity" data-index="2" data-num="0">
+        <span class="bag-shade" ></span>
+        <div class="bag-item-word">
+          <div class="wordBox">
+            <img src="../../images/wordbox.png" width="100%" alt="givewordsbg">
+          </div>
+
+          <div class="word">
+            <div class="word-img">
+              <img src="../../images/bagBig.png" alt="bagBig">
+            </div>
+            <span>绵</span>
+          </div>
+        </div>
+        <div class="bag-item-btns">
+          <a class="turnToSb" href="javascript:;">求好友赠送</a>
+        </div>
+      </div>
+     
+      <div class="bag-item right" data-index="3" data-num="0">
+        <span class="bag-shade"></span>
+        <div class="bag-item-word">
+          <div class="wordBox">
+            <img src="../../images/wordbox.png" width="100%" alt="givewordsbg">
+          </div>
+
+          <div class="word">
+            <div class="word-img">
+              <img src="../../images/bagBig.png" alt="bagBig">
+            </div>
+            <span>阳</span>
+          </div>
+        </div>
+        <div class="bag-item-btns">
+          <a class="turnToSb" href="javascript:;">求好友赠送</a>
+        </div>
+      </div>
+      <div class="bag-item right" data-index="4" data-num="0">
+        <span class="bag-shade"></span>
+        <div class="bag-item-word">
+          <div class="wordBox">
+            <img src="../../images/wordbox.png" width="100%" alt="givewordsbg">
+          </div>
+
+          <div class="word">
+            <div class="word-img">
+              <img src="../../images/bagBig.png" alt="bagBig">
+            </div>
+            <span>火</span>
+          </div>
+        </div>
+        <div class="bag-item-btns">
+          <a class="turnToSb" href="javascript:;">求好友赠送</a>
+        </div>
+      </div>
+      
+    </div>
+  </article>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
+  <script src="../../jquery-3.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="getword.js"></script>
+  <script type="text/javascript">
+    var eventP = document.querySelectorAll("bags")[0];
+    var bagItem = document.querySelectorAll("div.bag-item") ;
+    for(var i=0;i<bagItem.length;i++){
+      var n = i ;
+      bagItem[n].addEventListener('touchstart',touch, false);  
+      bagItem[n].addEventListener('touchmove',touch, false);  
+      bagItem[n].addEventListener('touchend',touch, false);  
+    }
+    var startX = null, endX = null, moveX = null, interval = null;   
+    function touch (event){  
+      var event = event || window.event;  
+      var target = event.target ;
+      if(target.className === "turnToSb") return false ; 
+      (function f (_target) {
+        if(_target.tagName.toLocaleLowerCase() === "body"){
+          target = null ;
+          return false;
+        }else if(!_target.className.match(/activity/)){
+          _target = _target.parentElement ;
+          f(_target) ;
+        }else if(_target.className.match("activity")){
+          target = _target;
+          return false ;
+        }
+      }(target))
+      if(!target) return false ;
+      var index = parseInt(target.dataset.index) ;
+      var children = target.parentElement.children ,num = null, isOdd = null // 是否为奇数;
+      if(children.length % 2 === 0) {
+        num = children.length / 2 ;
+        isOdd = false ;
+      }else {
+        num = Math.floor(children.length / 2) ; 
+        isOdd = true ;
+      }
+      var prev = null, next = null ;
+      if(index === 0){
+        prev = children[children.length - 1] ;
+        next = children[index + 1] ;
+      }else if(index === parseInt(children.length - 1)) {
+        next = children[0] ;
+        prev = children[index - 1] ;
+      }else {
+        prev = children[index - 1] ;
+        next = children[index + 1] ;
+      }
+      var w = target.clientWidth ;
+      var touch = event.changedTouches[0] ;
+      switch(event.type){  
+          case "touchstart": 
+            startX = touch.pageX; 
+            interval = touch.pageX;
+            break;  
+          case "touchend":  
+              if((parseFloat(touch.pageX) - parseFloat(startX)) > 30 ) {
+                target.className = "bag-item right" ;
+                prev.className = "bag-item activity" ;
+                var n = index + num ;
+                if(n >= children.length && !isOdd) n = n - children.length ;
+                else if(n > children.length - 1 && isOdd) n = n - children.length ;
+                children[n].className = "bag-item left";
+              }else if(parseFloat(touch.pageX) - parseFloat(startX) < -30) {
+                target.className = "bag-item left" ;
+                next.className = "bag-item activity" ;
+                var n = index - num ;
+                if(!isOdd) {
+                  n = n + 1 ;
+                  if(n < 0) n = children.length + n ;
+                }else {
+                  if(n < 0) n = children.length + n ;
+                }
+                children[n].className = "bag-item right";
+              }
+              break;  
+          case "touchmove":  
+              event.preventDefault();  
+              event.stopPropagation();
+              if(parseInt(interval) - parseInt(touch.pageX) > 0) { // 当前触摸点相对于前一触摸点左偏移
+
+              }else if(parseInt(interval) - parseInt(touch.pageX) < 0) { // 当前触摸点相对于前一触摸点右偏移
+
+              }
+              break;  
+      }       
+    }  
+
+    $("div.bags").on("touchstart", "a.turnToSb", function(e){
+      console.log(149)
+    })
+
+  </script>
+</body>
+</html>

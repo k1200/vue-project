@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">   
+	  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+	  <title>西蜀网优选</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
+	  <meta name="format-detection" content="telphone=no, email=no"/> 
+	  <meta name="apple-mobile-web-app-capable" content="yes"> 
+	  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+		<link href="../../mui/css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../../mapp.css">
+		<style type="text/css">
+			.goods {
+				width: 90%;
+				margin: auto;
+			}
+			.goods_item {
+			  padding: .4rem .4rem 0;
+			  border: 2px solid #000;
+			  border-radius: .75rem;
+			  margin: 0 0 8px 0;
+			  display: block;
+			}
+			.goods_item::after {
+			  position:absolute;
+			  content:attr(data-state);
+			  padding:3px 0;
+			  color:#fff;
+			  background-color:#ff551b;
+			  right:-25px;
+			  top:12px;
+			  transform:rotate(45deg);
+			  width:100px;
+			  text-align:center;
+			}
+			.down_time {
+			  background-color:rgba(0,0,0,0.5);
+			  position:absolute;
+			  bottom:0;
+			  text-align: center;
+			  padding: 3px 0;
+			  width: 100%;
+			  color: #fff;
+			}
+			.goods_item_image {
+			  border-top-left-radius: .75rem;
+			  border-top-right-radius: .75rem;
+			}
+			.mui-card-footer {
+				flex-wrap: wrap;
+				-webkit-flex-wrap: wrap;
+				padding: 0;
+			}
+			.goods_item_title {
+			  font-weight: bold;
+			  padding: .2rem;
+			  width: 100%;
+			}
+			.goods_item_progress {
+			  width: 96%;
+			  background-color: #101010;
+			  border-radius: 1.5rem;
+			  position: relative;
+			  color: #fff;
+			  text-align: center;
+			  margin: 0 auto;
+			  overflow: hidden;
+			  font-size: 12px;
+			}
+			.progress , .progress_full {
+			  height: 100%;
+			  position: absolute;
+			  background-color: #ff551b;
+			  left:0;
+			  top:0;
+			}
+			.progress_full {
+			  border-bottom-right-radius:1.5rem;
+			  border-top-right-radius:1.5rem;
+			}
+			.goods_item_user {
+				width: 100%;
+			  padding: 0 .4rem;
+			  display: flex;
+			  justify-content: center;
+			  -webkit-justify-content: center;
+			}
+			.goods_item_user img {
+			  width: 2.25rem;
+			  height: 2.25rem;
+			  border-radius: 50%;
+			  margin: .4rem .25rem;
+			  border:1px solid #ddd;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<div class="mui-content" id="home">
+		  <div class='head'>
+        <img :src="appset.toppic" style='width:100%;'></img>
+      </div>
+      <my-good :msg='data'></my-good>
+		</div>
+		<nav class="mui-bar mui-bar-tab">
+		    <a class="mui-tab-item mui-active">
+		        <span class="mui-icon mui-icon-home"></span>
+		        <span class="mui-tab-label">首页</span>
+		    </a>
+		    <a class="mui-tab-item">
+		        <span class="mui-icon mui-icon-person"></span>
+		        <span class="mui-tab-label">电话</span>
+		    </a>
+		</nav>
+		<!--<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>-->
+		<script src="../../mui/js/mui.min.js"></script>
+	  <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+	  <script src="../../vue-dev/dist/vue.js"></script>
+	  <script src="../../adaption.js"></script>
+	  <script src="../../app.js"></script>
+	  <script src="home.js?id=1"></script>
+		<script type="text/javascript">
+			mui.init();
+		</script>
+	</body>
+</html>

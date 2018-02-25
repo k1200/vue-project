@@ -1,0 +1,76 @@
+/**app.css 1.0.0 **/
+html,body {
+  margin:0;
+  padding: 0;
+  font-size: 20px;
+  height: 100%;
+  width: 100%;
+}
+body {
+  background-color: #fbcd02;
+  font-size: .7rem;
+}
+* {
+  box-sizing: border-box;
+}
+ul {
+  margin:0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+button, a {
+  outline: none;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+button {
+  border:none;
+}
+img {
+  display: block;
+}
+
+.txtellipsis {
+  white-space: nowrap;
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
+.txtellipsis-2 {
+  display: -webkit-box;
+  overflow: hidden;
+  white-space: normal!important;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  background-color: #fbfbfb;
+  width: 100%;
+  display: flex;
+  padding: .3rem;
+  justify-content: space-around;
+  -webkit-justify-content: space-around;
+}
+.bottomNav_item {
+  background:none;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.bottomNav_item span {
+  width: 100%;
+  font-size: .7rem;
+  text-align: center;
+  line-height: 1;
+}
+.bottomNav_item img {
+  height: 1.3rem;
+}
+

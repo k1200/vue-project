@@ -1,0 +1,5 @@
+<template name="countdown">
+  <view class='down_time'>
+    {{page_timestamp}}
+  </view>
+</template>

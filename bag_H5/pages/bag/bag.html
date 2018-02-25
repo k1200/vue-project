@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">   
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+  <title>西蜀网优选</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"> 
+  <meta name="format-detection" content="telphone=no, email=no"/> 
+  <meta name="apple-mobile-web-app-capable" content="yes"> 
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"> 
+	<link href="../../mui/css/mui.min.css" rel="stylesheet" />
+	<link rel="stylesheet" type="text/css" href="../../mapp.css">
+
+  <!--<link rel="stylesheet" type="text/css" href="bag.css">-->
+
+  <style type="text/css" media="screen">
+    .top {
+    	position: relative;
+    }
+    .top-tips {
+    	position: absolute;
+	    display: flex;
+	    justify-content: space-between;
+	    -webkit-justify-content: space-between;
+	    width: 100%;
+	    padding: .75rem;
+    }
+    .top-tip {
+    	padding: 1px 8px;
+	    background: rgba(0,0,0,.35);
+	    color: #fff;
+	    border-radius: 3px;
+	    font-size: 12px;
+    }
+    .down_time {
+    	position: absolute;
+	    bottom: 0;
+	    width: 100%;
+	    text-align: center;
+	    color: #fff;
+	    background: rgba(0,0,0,.35);
+	    padding: 2px;
+	    font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+	
+	<div class="mui-content" id="bag">
+		<my-top :pv="data.pv" :pic_1 = "data.pic_1" :page_timestamp="page_timestamp"></my-top>
+		<!--<div class="top">
+			<div class="top-tips">
+				<a class="top-tip" href="../home/home.html" class='goHome'>
+					<span class="mui-icon mui-icon-home" style="font-size: 18px;"></span>
+          <span>福袋首页</span>
+       	</a>
+        <p class="top-tip" style="margin: 0;">已有<span style="font-size: 14px;font-weight: bold;color: yellow;">{{data.pv}}</span>人喜欢</p>
+			</div>
+			<img class='head_img' :src='data.pic_1' width="100%"></img>
+			<div class='down_time'> {{ page_timestamp }} </div>
+		</div>-->
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+	<script src="../../vue-dev/dist/vue.js"></script>
+	<script src=" https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"> </script>
+	<script src="../../mui/js/mui.min.js"></script>
+  <script src="../../adaption.js"></script>
+  <script src="../../app.js"></script>
+  
+  <script src="bag.js"></script>
+
+  <script type="text/javascript">
+
+    
+    
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
