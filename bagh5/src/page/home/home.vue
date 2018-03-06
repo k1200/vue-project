@@ -1,31 +1,46 @@
 <template>
-  <article>
-    <div class="mui-content" id="home">
-      <section class='head'>
-        <img :src="appset.toppic" style='width:100%;'></img>
-      </section>
-      <section class="goods">
-        <ul>
-          <router-link tag="li" class="mui-card goods_item" v-for="(item, index) in activities" :to="'../bag/bag.html?id=' + item.id" :key="item.id" :data-state="item.mark">
-            <div class="mui-card-content">
-              <img class='goods_item_image' :src='item.pic_1' width="100%"></img>
-              <div class='down_time'>
-                {{ item.page_timestamp}}
-              </div>
-            </div>
-            <div class="mui-card-footer">
-              <div class='mui-ellipsis goods_item_title'>{{ item.title }}</div>
-              <div class='goods_item_progress'>
-                <div :class='item.page_class' :style="'width:' + item.page_progress + '%;'"></div>
-                <span style='position:relative;'>已兑换{{ item.get_sum }}份</span>
-              </div>
-              <div v-if="item.change.length>0" class='goods_item_user'>
-                <img v-for="(list, idx) in item.change" :key = "list.unionid" :src="list.headimg"></img>
-              </div>
-            </div>
-          </router-link>
-        </ul>
-      </section>
+  <article id="home">
+    <div class="container">
+      <div class="head">
+        <img src="http://7xoq3p.com1.z0.glb.clouddn.com/xshop%2F20180115%2F15159838932134.png" style="width: 100%;">
+      </div>
+      <div class="goods">
+        <a href="http://tec.xishuw.com/Prize/BagWechat/infor/id/9" data-state="已结束" class="goods_item">
+          <div style="position: relative;">
+            <img src="http://7xoq3p.com1.z0.glb.clouddn.com/shop66a11904f0d3cb3b0321110a3014ac031516280795.jpg" class="goods_item_image">
+            <div class="down_time"> 活动已结束 </div>
+          </div>
+          <div class="goods_item_title txtellipsis">绵阳火锅节</div>
+          <div class="goods_item_progress">
+            <div class="progress" style="width: 73%;"></div> <span style="position: relative;">已兑换73份</span>
+          </div>
+          <div class="goods_item_user">
+            <img src="http://wx.qlogo.cn/mmopen/vi_32/icicTKb8d86B8LpN1OfwXfRDZFB77lLQ1ZYO1EqxmSwFeo0XaiboHR0HNE2IrxmAoDAFrqcWOrdwmnicI4tcqG319A/132">
+          </div>
+        </a>
+        <a href="http://tec.xishuw.com/Prize/BagWechat/infor/id/8" data-state="已结束" class="goods_item">
+          <div style="position: relative;">
+            <img src="http://7xoq3p.com1.z0.glb.clouddn.com/shop835b48946d1d86b4dd6329deda1d6c021516261226.jpg" class="goods_item_image">
+            <div class="down_time"> 活动已结束 </div>
+          </div>
+          <div class="goods_item_title txtellipsis">大闸蟹抢购</div>
+          <div class="goods_item_progress">
+            <div class="progress" style="width: 0%;"></div>
+            <span style="position: relative;">已兑换0份</span>
+          </div>
+        </a>
+        <a href="http://tec.xishuw.com/Prize/BagWechat/infor/id/7" data-state="进行中" class="goods_item">
+          <div style="position: relative;">
+            <img src="http://7xoq3p.com1.z0.glb.clouddn.com/shop279df1f8e49c5508455f07f6ddebf7de1516260938.jpg" class="goods_item_image">
+            <div class="down_time"> 距离结束还剩 343 天 11 时 52 分 29 秒 </div>
+          </div>
+          <div class="goods_item_title txtellipsis">美食火锅节</div>
+          <div class="goods_item_progress">
+            <div class="progress" style="width: 0%;"></div>
+            <span style="position: relative;">已兑换0份</span>
+          </div>
+        </a>
+      </div>
     </div>
     <foot-guide></foot-guide>
   </article>
@@ -34,24 +49,21 @@
 <script>
 import footGuide from '../../components/footGuide/footGuide'
 import {getActivities} from '../../service/getData'
+import {activitiesdata} from '../../service/response'
 export default {
   name: 'home',
-  data(){
-    return{
-      activities: [], // 所有活动列表
-      appset: {} //活动首页设置
-    }
-  },
-  mounted(){
-    // 获取首页数据
-    getActivities()
+  components: { footGuide },
+  mounted () {
+    getActivities(activitiesdata, {url: '../testjson/home/home.json'})
   }
-  components: { footGuide }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  #home {
+    padding-bottom: 52px;
+  }
   .goods {
     width: 90%;
     margin: auto;
@@ -62,6 +74,9 @@ export default {
     border-radius: .75rem;
     margin: 0 0 8px 0;
     display: block;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
   }
   .goods_item::after {
     position:absolute;
@@ -105,7 +120,7 @@ export default {
     position: relative;
     color: #fff;
     text-align: center;
-    margin: 0 auto;
+    margin: 0 auto .4rem;
     overflow: hidden;
     font-size: 12px;
   }
