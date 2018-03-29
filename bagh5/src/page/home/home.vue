@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     initData () {
-      var res = getActivities(activitiesdata)
+      let res = getActivities(activitiesdata)
       this.appset = res.appset
       this.activities = res.activities
     }
