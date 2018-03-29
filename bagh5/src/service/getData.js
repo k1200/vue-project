@@ -2,7 +2,7 @@
 const res = require('../testjson/home/home.json')
 
 const fetch = (responseSuccess, requestConfig, responseError) => {
-  responseSuccess(res)
+  return responseSuccess(res)
   // mui.ajax('testjson/home/home.json', {
   //   data: requestConfig.data || null,
   //   dataType: requestConfig.dataType || 'json',
