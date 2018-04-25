@@ -1,12 +1,15 @@
 <template>
-  <div id="app">
+  <div>
     <router-view></router-view>
+    <foot-guide></foot-guide>
   </div>
 </template>
 
 <script>
+import footGuide from './components/footGuide/footGuide'
 export default {
-  name: 'App'
+  name: 'footguide',
+  components: { footGuide }
 }
 </script>
 

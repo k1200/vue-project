@@ -27,12 +27,10 @@
         </ul>
       </section>
     </div>
-    <foot-guide></foot-guide>
   </article>
 </template>
 
 <script>
-import footGuide from '../../components/footGuide/footGuide'
 import {getActivities} from '../../service/getData'
 import {activitiesdata} from '../../service/response'
 export default {
@@ -43,7 +41,6 @@ export default {
       appset: {}
     }
   },
-  components: { footGuide },
   mounted () {
     this.initData()
   },
